@@ -15,6 +15,6 @@ function Fib(n){
 	} 
 }
 
-for (var j = 0; j <= 6; j++) {
+for (var j = 0; j <= 80; j++) {
 	 console.log("F"+j+" = "+Fib(j));
 }

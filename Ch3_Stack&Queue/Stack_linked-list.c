@@ -7,7 +7,7 @@ struct node{
 };
 
 typedef struct node Node;
-Node *top,*temp;
+Node *top;
 
 void create_stack(void);
 void stack_count(void);
@@ -25,6 +25,7 @@ int main(){
     create_stack();
     push(1);
     push(2);
+    list();
     stack_count();
     TopElement();
     pop();
@@ -39,9 +40,11 @@ int main(){
 
 /*初始化stack*/
 void create_stack(){
+  printf(" (* ^ ω ^)\n");
   top = NULL;
 }
 
+/*顯示stack的元素個數*/
 void stack_count(){
   printf("\n %d elements in stack",count);
 }
@@ -53,6 +56,8 @@ void push(int data){
     top->info = data;
   }
   else{  //繼續疊上去
+    Node* temp;
+
     temp = (Node*)malloc(1*sizeof(Node));
     temp->next = top;
     temp->info = data;
@@ -68,6 +73,8 @@ void pop(){
     return;
   }
   else{
+    Node* temp;
+
     temp = top; //用來指向最上面的node 之後把這空間free掉
     printf("\n Poped value : %d", top->info);
     top = top->next;
@@ -76,7 +83,10 @@ void pop(){
   count--;
 }
 
+/*列出stack內所有元素*/
 void list(){
+  Node* temp;
+
   temp = top;
   if(temp == NULL){
     printf("\n Stack is empty!");
@@ -89,10 +99,13 @@ void list(){
   }
 }
 
+/*顯示top元素*/
 void TopElement(){
   printf("\n Top element is : %d",top->info);
 }
 
+
+/*檢查stack是否為空*/
 void CheckEmpty(){
   if(top == NULL){
     printf("\n Stack is empty!");
@@ -102,8 +115,9 @@ void CheckEmpty(){
   }
 }
 
+/*清除stack內所有元素*/
 void clear(){
-  temp = top;
+  Node* temp = top;
 
   while(temp != NULL){
     temp = top->next;

@@ -51,17 +51,17 @@ void stack_count(){
 
 void push(int data){
   if(top == NULL){ //第一個node
-    top = (Node*)malloc(1*sizeof(Node));
+    top        = (Node*)malloc(1*sizeof(Node));
     top->next  = NULL;
-    top->info = data;
+    top->info  = data;
   }
   else{  //繼續疊上去
     Node* temp;
 
-    temp = (Node*)malloc(1*sizeof(Node));
+    temp       = (Node*)malloc(1*sizeof(Node));
     temp->next = top;
     temp->info = data;
-    top = temp;
+    top        = temp;
   }
   printf("\n pushed value : %d",data);
   count++;
@@ -77,7 +77,7 @@ void pop(){
 
     temp = top; //用來指向最上面的node 之後把這空間free掉
     printf("\n Poped value : %d", top->info);
-    top = top->next;
+    top  = top->next;
     free(temp);
   }
   count--;
@@ -122,7 +122,7 @@ void clear(){
   while(temp != NULL){
     temp = top->next;
     free(top);
-    top = temp;
+    top  = temp;
     temp = temp->next;
   }
   free(temp);

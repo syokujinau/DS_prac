@@ -20,7 +20,7 @@ myClass::myClass(){
 }
 
 myClass::myClass(string n){
-	name = n;
+	setName(n);
 }
 
 myClass::myClass(string n, int i){
@@ -34,10 +34,11 @@ void myClass::setName(string x){
 }
 	
 string myClass::getData(void){
+	//存放string資料
 	string s = "";
-	char str[3];
-	sprintf(str, "%d", id);
-	s = "Hi, I'm " + name + " and my id is " +str ; 
+	//將int轉成字串 利用string library to_string()函式
+	//concatenate
+	s = "Hi, I'm " + name + " and my id is " +to_string(id) ; 
 	return s;
 }
 

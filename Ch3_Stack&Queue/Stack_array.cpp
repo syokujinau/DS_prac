@@ -55,6 +55,7 @@ int main(){
   int value;
   
   stack.push(2);
+  stack.push(4);
   stack.push(8);
   stack.list();
   // cout << "Pushing ...\n";

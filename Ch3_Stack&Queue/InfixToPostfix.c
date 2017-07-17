@@ -5,10 +5,20 @@
 
 typedef enum {LPAREN,RPAREN,PLUS,MINUS,TIMES,DIVIDE,EOE,OPERAND} TokenType;
 TokenType stack[MaxStackSize];
-char expr[MaxExprSize];          /* 用來存放使用者輸入的中序運算式  */
+// 用來存放使用者輸入的中序運算式
+char expr[MaxExprSize];
+
+//定義優先權
+//in stack precedence
 int isp[] = {0,19,12,12,13,13,0};
-int icp[] = {20,19,12,12,13,13,0};   /* 符號分別為 (, ), +,-,  *,/, EOE */
-                                     /*EOE(End Of Expression) 結尾符號*/
+//incoming precedence
+int icp[] = {20,19,12,12,13,13,0};
+
+
+/**************************************
+* 符號分別為 (, ), +,-,  *,/, EOE     *
+*其中EOE(End Of Expression) 結尾符號  *
+**************************************/
 TokenType GetOneToken(char *symbol,int *c){
     *symbol = expr[*c];
     (*c)++;
@@ -51,11 +61,11 @@ TokenType pop(int *top){
 }
 
 void TransToPostfix(void){
-  char symbol;
   TokenType token;
   int top=0;
-  int c=0;
-  stack[0] = EOE;
+  int c=0;          //expr陣列的index 並把內容放到symbol
+  char symbol;
+  stack[0] = EOE;   //初始化stack
 
   token = GetOneToken(&symbol,&c);
   while(token!=EOE)

@@ -37,7 +37,7 @@ string myClass::getData(void){
 	//存放string資料
 	string s = "";
 	//將int轉成字串 利用string library to_string()函式
-	//concatenate
+	//concatenate 字串
 	s = "Hi, I'm " + name + " and my id is " +to_string(id) ; 
 	return s;
 }

@@ -27,6 +27,7 @@ IntStack::IntStack(int capacity){
 
 //Adds a value to the stack
 void IntStack::push(int value){
+  // cout << "top is : "<<top <<endl;
   if(top == capacity) throw IntStack::Overflow();
   stackArray[top] = value;
   top++;
@@ -44,31 +45,32 @@ bool IntStack::isEmpty(){
 }
 
 void IntStack::list(){
-  for(int i=0; i<top; i++){
-    cout << stackArray[i] << endl;
+  int temp = top;
+  cout << "\n List: \n";
+  for(int i=temp-1; i>=0 ; i--){
+    cout << "      " << stackArray[i] <<endl;
   }
 }
 
 int main(){
+
   IntStack stack(5);
-  int values[] = {5, 10, 15, 20, 25};
-  int value;
-  
+  int value; //store the poped value.
+
+  stack.push(5);
+  stack.push(10);
+  stack.push(15);
+  stack.push(20);
+  stack.push(25);
+  stack.list();
+  stack.pop(value); 
+  stack.pop(value); 
+  stack.pop(value);
   stack.push(2);
   stack.push(4);
-  stack.push(8);
+  stack.push(6);
   stack.list();
-  // cout << "Pushing ...\n";
-  // for (int k = 0; k < 5; k++){
-  //   cout << values[k] << " ";
-  //   stack.push(values[k]);
-  // }
-  // cout << "\n Poping ...\n";
-  // while(!stack.isEmpty()){
-  //   stack.pop(value);
-  //   cout << value << " ";
-  // }
-  // cout << endl;
+
 
   return 0;
 }

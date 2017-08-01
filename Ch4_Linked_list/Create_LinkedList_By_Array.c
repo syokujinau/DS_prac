@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 //因為sizeof只能適用靜態陣列，但函式只能傳入指標，故需先取得陣列長度
-#define a_length(a) (sizeof(a)/sizeof(int))
+#define AryLength(a) (sizeof(a)/sizeof(int))
 
 //宣告linked-list node
 struct node{
@@ -21,7 +21,7 @@ int main(void) {
 
   //將陣列a用鏈結串列儲存
   int a[]={1,2,3,4,5};
-  h1=CreateList(a,a_length(a));
+  h1=CreateList(a,AryLength(a));
   print_linked_list(h1);
 
   return 0;

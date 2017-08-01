@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <assert.h>
 //因為sizeof只能適用靜態陣列，但函式只能傳入指標，故需先取得陣列長度
-#define AryLength(a) (sizeof(a)/sizeof(int))
+#define AryLength(array) (sizeof(array)/sizeof(int))
 
 //宣告linked-list node
 struct node{

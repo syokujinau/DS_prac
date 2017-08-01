@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-//因為sizeof只能適用靜態陣列，但函示只能傳入指標，故需先取得陣列長度
+//因為sizeof只能適用靜態陣列，但函式只能傳入指標，故需先取得陣列長度
 #define a_length(a) (sizeof(a)/sizeof(int))
 
 //宣告linked-list node

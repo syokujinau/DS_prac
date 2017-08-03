@@ -3,20 +3,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node;
-typedef struct Node* PtrToNode;
-typedef PtrToNode Stack;
 struct Node {
   int data;
-  PtrToNode Next;
+  struct Node* Next;
 };
+typedef struct Node* PtrToNode; //Node型態指標 別名PtrToNode
+typedef PtrToNode Stack;        //即PtrToNode  特別用來指向stack的Top 
 
-void Push(int, Stack);
+
+void Push(int, Stack); 
 void Pop(Stack);
 
 int main(){
   printf("OK\n");
-  Stack s1;  //Node 型態的指標變數 名稱叫s1
+  Stack s1;  //Node 型態的指標變數 名稱叫s1 指向該stack的top
   Push(1,s1);
   Pop(s1);
   
@@ -25,6 +25,10 @@ int main(){
 }
 
 
+/* 
+ *Push函式
+ *parameter:(push data, pointer to top)
+*/
 void Push(int x, Stack s){
   PtrToNode Tmp;
   Tmp = (PtrToNode*)malloc(sizeof(PtrToNode)); //??
@@ -38,6 +42,10 @@ void Push(int x, Stack s){
   }
 }
 
+/* 
+ *Pop函式
+ *parameter:(pointer to top)
+*/
 void Pop(Stack s){
   PtrToNode Tmp;
   int item;

@@ -16,7 +16,7 @@ void Pop(Stack);
 
 int main(){
   printf("OK\n");
-  Stack s1;
+  Stack s1;  //Node 型態的指標變數 名稱叫s1
   Push(1,s1);
   Pop(s1);
   

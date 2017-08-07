@@ -1,4 +1,4 @@
-/*C»y¨¥linked-list¹ê§@Stack*/
+/*Cèªè¨€linked-listå¯¦ä½œStack*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -7,7 +7,7 @@
 
 typedef struct{
     int Int_Item;
-    /*   °ïÅ|¤¸¯À¦¨­û¡A¥i·s¼W¨ä¥LÄæ¦ì  */
+    /*   å †ç–Šå…ƒç´ æˆå“¡ï¼Œå¯æ–°å¢å…¶ä»–æ¬„ä½  */
 }element;
 
 struct Stack_Node{
@@ -25,34 +25,34 @@ void PrintStack(S_Node_P);
 
 int main(void)
 {
-    printf("\n/*********¹êÅç1*********/ \n");//Â²³æªºPush¡BPop¾Ş§@
-    //¥Î¨Ó¸Ëpushªº¼Æ¾Ú
+    printf("\n/*********å¯¦é©—1*********/ \n");//ç°¡å–®çš„Pushã€Popæ“ä½œ
+    //ç”¨ä¾†è£pushçš„æ•¸æ“š
     element a;
     a.Int_Item=1;
-    S_Node_P top = NULL; // ¤@¶}©l®É¡Atop«ü¦VNULL
+    S_Node_P top = NULL; // ä¸€é–‹å§‹æ™‚ï¼ŒtopæŒ‡å‘NULL
     push(&top,a);   //push 1
-    pop(&top,&a);  //pop °O±o¥Î¤@­ÓelementÅÜ¼Æ©Ó±µpop¥Xªº¼Æ­È¡A¨Ïmain¯à¨Ï¥Îpop¥Xªº¼Æ­È
+    pop(&top,&a);  //pop è¨˜å¾—ç”¨ä¸€å€‹elementè®Šæ•¸æ‰¿æ¥popå‡ºçš„æ•¸å€¼ï¼Œä½¿mainèƒ½ä½¿ç”¨popå‡ºçš„æ•¸å€¼
     printf("pop %d successful...\n",a.Int_Item);
-    pop(&top,&a);  //popªÅ°ïÅ|
+    pop(&top,&a);  //popç©ºå †ç–Š
 
-    printf("\n/*********¹êÅç2*********/ \n");//Push¤@³s¦ê¸ê®Æ(°}¦C)¡A¨Ãpop¥X³»ºİ¸ê®Æ
+    printf("\n/*********å¯¦é©—2*********/ \n");//Pushä¸€é€£ä¸²è³‡æ–™(é™£åˆ—)ï¼Œä¸¦popå‡ºé ‚ç«¯è³‡æ–™
     S_Node_P top2 = NULL;
     element ary[5];
-    element a2; //¥Î¨Ó©Ó±µpop¥Xªº¸ê®Æ
+    element a2; //ç”¨ä¾†æ‰¿æ¥popå‡ºçš„è³‡æ–™
     int i;
     for(i=0; i<5; i++){
       ary[i].Int_Item=i+1;
       push(&top2,ary[ i ]);
     }
     PrintStack(top2);
-    pop(&top2,&a2);  //pop °O±o¥Î¤@­ÓelementÅÜ¼Æ©Ó±µpop¥Xªº¼Æ­È¡A¨Ïmain¯à¨Ï¥Îpop¥Xªº¼Æ­È
+    pop(&top2,&a2);  //pop è¨˜å¾—ç”¨ä¸€å€‹elementè®Šæ•¸æ‰¿æ¥popå‡ºçš„æ•¸å€¼ï¼Œä½¿mainèƒ½ä½¿ç”¨popå‡ºçš„æ•¸å€¼
     printf("pop %d successful...\n",a2.Int_Item);
     PrintStack(top2);
 
     return 0;
 }
 
-/*  ©I¥s»yªk¬° int pushOK = push(&top,Item);  */
+/*  å‘¼å«èªæ³•ç‚º int pushOK = push(&top,Item);  */
 int push(S_Node_P *top, element Item){
    S_Node_P temp = (S_Node_P)malloc(sizeof(S_Node));
    if(temp==NULL)
@@ -62,11 +62,11 @@ int push(S_Node_P *top, element Item){
    }
    temp->Item = Item;
    temp->link = *top;
-   *top = temp;       /*  top¥Ã»·«ü¦V°ïÅ|³»ºİ  */
+   *top = temp;       /*  topæ°¸é æŒ‡å‘å †ç–Šé ‚ç«¯  */
    return true;
 }
 
-/*  ©I¥s»yªk¬° int popOK = pop(&top,&Item);  */
+/*  å‘¼å«èªæ³•ç‚º int popOK = pop(&top,&Item);  */
 int pop(S_Node_P *top,element *Item){
    S_Node_P temp = *top;
 
@@ -76,7 +76,7 @@ int pop(S_Node_P *top,element *Item){
      return false;
    }
    *Item = temp->Item;
-   *top  = temp->link;              /*  top¥Ã»·«ü¦V°ïÅ|³»ºİ  */
+   *top  = temp->link;              /*  topæ°¸é æŒ‡å‘å †ç–Šé ‚ç«¯  */
    free(temp);
    return true;
 }

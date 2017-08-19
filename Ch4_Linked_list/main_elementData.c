@@ -1,3 +1,4 @@
+//將node的資料再用struct封裝  可以包含更多不同類型的data
 #include <stdio.h>
 
 typedef struct{

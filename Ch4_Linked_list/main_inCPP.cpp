@@ -105,28 +105,17 @@ void LinkedList::Clear(){
 }
 
 void LinkedList::Reverse(){
-  // ListNode *previous,*head2,*current;
-  // current = head;
-  // previous = NULL;
+  ListNode *previous,*head2,*current;
+  current = head;
+  previous = NULL;
 
-  // while(current!=NULL){
-  //   head2          = previous;
-  //   previous       = current;
-  //   current        = current->link;
-  //   previous->link = head2;
-  // }
-  // head = previous;
-  ListNode *current, *next; *head2;
-  current= head;
-  next   = current->link;
-  head2  = NULL;
   while(current!=NULL){
-    current->link = head2;
-    head2         = current;
-    current       = next;
-    next          = current->link;
+    head2          = previous;
+    previous       = current;
+    current        = current->link;
+    previous->link = head2;
   }
-  head = head2;
+  head = previous;
 }
 
 
@@ -144,12 +133,10 @@ int main() {
     
     list.Delete(3);     
     list.PrintList();    
-    // list.Push_front(8);  // list: 8 5 3 4
-    // list.PrintList();    // 印出:  8 5 3 4
-    list.Reverse();      // list: 4 3 5 8
-    list.PrintList();    // 印出:  4 3 5 8
-    list.Clear();        // 清空list
-    list.PrintList();    // 印出: List is empty.
+    list.Reverse();       
+    list.PrintList();    
+    list.Clear();        
+    list.PrintList();    
 
     return 0;
 }

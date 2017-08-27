@@ -1,0 +1,28 @@
+#######################################
+# Syntax Coloring Map For LinkedList    
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+LinkedList    KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+PrintList    KEYWORD2
+Push_front   KEYWORD2
+Push_back    KEYWORD2
+Delete	     KEYWORD2
+Clear        KEYWORD2
+Reverse      KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################

@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 using namespace std;
 
 typedef struct{
@@ -6,6 +6,7 @@ typedef struct{
     char data;
 }record;
 
+/*回傳指定資料(key)之index，沒找到則回傳-1*/
 int LinearSearch(record ary[],int size, int k);
 int BinarySearch(record ary[],int size, int k);
 int BinarySearch(record ary[],int left,int right, int k);
@@ -36,14 +37,15 @@ int main(){
 
 int LinearSearch(record ary[],int size, int k){
   //cout << endl << "Searching target key is : " << k <<endl;
-  int index;
-    ary[size].key = k;//崗哨，ary[size].key放指定鍵值
-    //printData(ary,10);
-    for (index = 0; ary[index].key != k; index++){
-        //index遞增直到碰到指定鍵值，則該index值即為遇搜尋資料所在
-        //若都沒搜尋到則碰到崗哨時的鍵值會等於size  回傳-1代表Not Found
+  int i=0;
+  while(i < size){  //從index=0~size-1尋訪該Array，若過程中找到指定鍵值則回傳目前index
+    if(ary[i].key == k){
+      return i;
     }
-    return ((index < size)? index : -1); 
+    i++;
+  }
+  return -1;  //尋訪完畢沒有符合的資料，回傳-1代表Not Found
+  
 }
 
 int BinarySearch(record ary[],int size, int k){ //Iterative版本

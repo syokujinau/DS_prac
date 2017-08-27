@@ -1,56 +1,155 @@
 #include <iostream>
 using namespace std;
 
-class LinkedList{
-  protected:
-    struct ListNode{
-      double value;
-      ListNode* next;
-      ListNode(double value1, ListNode* next1 = NULL){
-        value = value1;
-        next  = next1;
-      }
-    };
-    ListNode* head;
-  
-  public:
-    LinkedList(){ 
-      head = NULL; 
-    }
-    ~LinkedList();
-    void add(double data);
-    void remove(double data);
-    void printList();
+class LinkedList;
+
+class ListNode{
+private:
+  int data;
+  ListNode* link;
+public:
+  ListNode():data(0),link(NULL){};
+  ListNode(int d):data(d),link(NULL){};
+
+  friend class LinkedList;
 };
 
+class LinkedList{
+private:
+  ListNode* head;
+public:
+  LinkedList():head(NULL){};
+  void PrintList();
+  void Push_front(int x);
+  void Push_back(int x);
+  void Delete(int x);
+  void Clear();
+  void Reverse();
+};
 
-/*插入node到最後(接NULL)*/
-void LinkedList::add(double data){
+void LinkedList::PrintList(){
   if(head == NULL){
-    head = new ListNode(data);
+    cout << "List is empty.\n";
   }
   else{
-    ListNode* nodePtr = head;
-    while(nodePtr->next != NULL){
-      nodePtr = nodePtr->next;
+    ListNode* current = head;
+    cout << "HEAD → ";
+    for(; current!=NULL; current = current->link){
+      cout << "[" << current->data << "] → ";
     }
-    nodePtr->next = new ListNode(data); 
-    //插入node到最後 (沒有第二個參數預設next = NULL)
+    cout << " NULL\n";
+  }
+
+}
+
+void LinkedList::Push_front(int x){
+  ListNode* newNode = new ListNode(x);
+  newNode->link = head;
+  head          = newNode;
+}
+
+void LinkedList::Push_back(int x){
+  ListNode* newNode = new ListNode(x);
+  
+  if (head == NULL) {                      // 若list沒有node, 令newNode為first
+    head = newNode;
+  }
+  else{
+    /*不知為啥不能這樣寫*/
+    // ListNode* current = head;
+    // for(; current!=NULL; current = current->link){}
+    // current->link = newNode;
+    
+    ListNode* current = head;
+    while (current->link != NULL) {  // Traversal
+          current = current->link;
+    }
+    current->link = newNode;
   }
 }
 
+void LinkedList::Delete(int x){
+  ListNode* current = head;
+  if(current == NULL){ //case 1: empty list
+    cout << "It's an empty list.\n";
+  }
+  else if(current->data == x){//case 2: first node is the target, don't need to traversal.
+    head = head->link;
+    free(current);
+  }
+  else{ //case 3: Traversal the list until the target is found 需要previous指標幫助連結前後2節點
+    ListNode* previous=NULL;
+    while(current->data != x){ //尋訪串列直到current指向的node存有資料x
+      previous = current;
+      current = current->link;
+      if(current == NULL){//當current指向NULL(尋訪完畢)卻還沒找到該筆資料，則顯示Not found並結束函式
+        cout << "Not found data " << x << " in the list\n";
+        return;
+      }
+    }
+    previous->link = current->link;
+    delete current;
+    current = NULL; //安全起見，釋放指標指向的空間後要讓其指向NULL
+  }
+}
 
+void LinkedList::Clear(){
+  cout << "Clear all data...\n";
+  ListNode* current;
+  while(head!=NULL){
+    current = head;
+    head = head->link;
+    delete current;
+    current = NULL; //安全起見，釋放指標指向的空間後要讓其指向NULL
+  }
+}
 
+void LinkedList::Reverse(){
+  // ListNode *previous,*head2,*current;
+  // current = head;
+  // previous = NULL;
 
-int main(){
-  
+  // while(current!=NULL){
+  //   head2          = previous;
+  //   previous       = current;
+  //   current        = current->link;
+  //   previous->link = head2;
+  // }
+  // head = previous;
+  ListNode *current, *next; *head2;
+  current= head;
+  next   = current->link;
+  head2  = NULL;
+  while(current!=NULL){
+    current->link = head2;
+    head2         = current;
+    current       = next;
+    next          = current->link;
+  }
+  head = head2;
 }
 
 
-/*C++結構可以用建構子 設初值也可以用列表寫法*/
-// struct my{
-//   int a;
-//   int b;
-//   my(int a1, int b1 =0):a(a1),b(b1){    //如果宣告my obj(1); 則b預設為0
-//   }
-// };
+int main() {
+
+    LinkedList list;     // 建立LinkedList的object
+    list.PrintList();    // 目前list是空的
+    list.Delete(4);      
+    list.Push_back(5);  
+    list.Push_back(3);    
+    list.Push_front(9);  
+    list.Push_front(11);  
+    list.Push_front(22);  
+    list.PrintList();    
+    
+    list.Delete(3);     
+    list.PrintList();    
+    // list.Push_front(8);  // list: 8 5 3 4
+    // list.PrintList();    // 印出:  8 5 3 4
+    list.Reverse();      // list: 4 3 5 8
+    list.PrintList();    // 印出:  4 3 5 8
+    list.Clear();        // 清空list
+    list.PrintList();    // 印出: List is empty.
+
+    return 0;
+}

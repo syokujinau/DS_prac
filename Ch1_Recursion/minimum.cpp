@@ -2,8 +2,8 @@
 using namespace std;
 
 int min(int A[], int size){
-  if (size == 1){
-    return A[1];
+  if (size == 0){
+    return A[0];
   }
   else{
     

@@ -19,13 +19,13 @@ void LinkedList::PrintList(){
 
 }
 
-void LinkedList::Push_front(int x){
+void LinkedList::Add_front(int x){
   ListNode* newNode = new ListNode(x);
   newNode->link = head;
   head          = newNode;
 }
 
-void LinkedList::Push_back(int x){
+void LinkedList::Add_back(int x){
   ListNode* newNode = new ListNode(x);
   
   if (head == NULL) {                      // 若list沒有node, 令newNode為first

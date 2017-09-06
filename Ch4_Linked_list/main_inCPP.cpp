@@ -9,7 +9,7 @@ private:
   ListNode* link;
 public:
   ListNode():data(0),link(NULL){};
-  ListNode(int d):data(d),link(NULL){};
+  ListNode(int d):data(d),link(NULL){}; //用於加入新data
 
   friend class LinkedList;
 };
@@ -18,13 +18,14 @@ class LinkedList{
 private:
   ListNode* head;
 public:
-  LinkedList():head(NULL){};
+  LinkedList():head(NULL){};  //建構子 預設將head指向NULL
   void PrintList();
-  void Push_front(int x);
-  void Push_back(int x);
-  void Delete(int x);
-  void Clear();
-  void Reverse();
+  void Add_front(int x);      //新增節點於前端(head端) 即為push
+  void Add_back(int x);       //新增節點於尾端(NULL端)
+  void Pop();                 //pop
+  void Delete(int x);         //刪除指定節點
+  void Clear();               //清空串列並釋放記憶體
+  void Reverse();             //反轉串列 
 };
 
 void LinkedList::PrintList(){
@@ -42,30 +43,34 @@ void LinkedList::PrintList(){
 
 }
 
-void LinkedList::Push_front(int x){
+void LinkedList::Add_front(int x){
   ListNode* newNode = new ListNode(x);
   newNode->link = head;
   head          = newNode;
 }
 
-void LinkedList::Push_back(int x){
-  ListNode* newNode = new ListNode(x);
+void LinkedList::Add_back(int x){
+  ListNode* newNode = new ListNode(x); //分配一ListNode型態空間，值為x並預設指向NULL
   
-  if (head == NULL) {                      // 若list沒有node, 令newNode為first
+  if (head == NULL) {      // 若list沒有node, 令newNode為first
     head = newNode;
   }
   else{
-    /*不知為啥不能這樣寫*/
-    // ListNode* current = head;
-    // for(; current!=NULL; current = current->link){}
-    // current->link = newNode;
-    
     ListNode* current = head;
-    while (current->link != NULL) {  // Traversal
+    while (current->link != NULL) {  // Traversal直到指向尾端節點
           current = current->link;
     }
     current->link = newNode;
   }
+}
+
+void LinkedList::Pop(){
+  ListNode* tmp;
+  tmp  = head;
+  cout << "Poping " << tmp->data <<endl;
+  head = head->link;
+  delete tmp;
+  tmp  = NULL;
 }
 
 void LinkedList::Delete(int x){
@@ -105,36 +110,45 @@ void LinkedList::Clear(){
 }
 
 void LinkedList::Reverse(){
-  ListNode *previous,*head2,*current;
-  current = head;
-  previous = NULL;
+  ListNode *h2,*h2_next,*h1;
+  h1 = head;
+  h2 = NULL;
 
-  while(current!=NULL){
-    head2          = previous;
-    previous       = current;
-    current        = current->link;
-    previous->link = head2;
+  while(h1!=NULL){
+    h2_next  = h2;
+    h2       = h1;
+    h1       = h1->link;
+    h2->link = h2_next;
   }
-  head = previous;
+  head = h2;
 }
 
 
 int main() {
 
-    LinkedList list;     // 建立LinkedList的object
+    LinkedList list;     // 建立LinkedList的object，default head = NULL
     list.PrintList();    // 目前list是空的
-    list.Delete(4);      
-    list.Push_back(5);  
-    list.Push_back(3);    
-    list.Push_front(9);  
-    list.Push_front(11);  
-    list.Push_front(22);  
-    list.PrintList();    
     
-    list.Delete(3);     
+    //刪空串列
+    list.Delete(4);
+    //Push back 5,3,9  Push front 11,22 並印出
+    list.Add_back(5);  
+    list.Add_back(3);    
+    list.Add_front(9);  
+    list.Add_front(11);  
+    list.Add_front(22);  
     list.PrintList();    
+    //刪其中一節點
+    list.Delete(9);     
+    list.PrintList();    
+    //反轉串列
     list.Reverse();       
-    list.PrintList();    
+    list.PrintList();
+    //Pop 2次
+    list.Pop();
+    list.Pop();  
+    list.PrintList();
+    //清除串列
     list.Clear();        
     list.PrintList();    
 

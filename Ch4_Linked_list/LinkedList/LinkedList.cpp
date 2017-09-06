@@ -32,11 +32,6 @@ void LinkedList::Add_back(int x){
     head = newNode;
   }
   else{
-    /*不知為啥不能這樣寫*/
-    // ListNode* current = head;
-    // for(; current!=NULL; current = current->link){}
-    // current->link = newNode;
-    
     ListNode* current = head;
     while (current->link != NULL) {  // Traversal
           current = current->link;

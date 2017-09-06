@@ -45,6 +45,16 @@ void LinkedList::Push_back(int x){
   }
 }
 
+void LinkedList::Pop(){
+  ListNode* tmp;
+  tmp  = head;
+  //cout << "Poping " << tmp->data <<endl;
+  Serial.println("Poping "+ (String)tmp->data);
+  head = head->link;
+  delete tmp;
+  tmp  = NULL;
+}
+
 void LinkedList::Delete(int x){
   ListNode* current = head;
   if(current == NULL){ //case 1: empty list

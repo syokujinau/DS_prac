@@ -26,8 +26,9 @@ private:
 public:
   LinkedList():head(NULL){};
   void PrintList();
-  void Push_front(int x);
-  void Push_back(int x);
+  void Add_front(int x);
+  void Add_back(int x);
+  void Pop();
   void Delete(int x);
   void Clear();
   void Reverse();

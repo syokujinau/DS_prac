@@ -95,15 +95,15 @@ void LinkedList::Clear(){
 }
 
 void LinkedList::Reverse(){
-  ListNode *previous,*head2,*current;
-  current = head;
-  previous = NULL;
+  ListNode *h2,*h2_next,*h1;
+  h1 = head;
+  h2 = NULL;
 
-  while(current!=NULL){
-    head2          = previous;
-    previous       = current;
-    current        = current->link;
-    previous->link = head2;
+  while(h1!=NULL){
+    h2_next  = h2;
+    h2       = h1;
+    h1       = h1->link;
+    h2->link = h2_next;
   }
-  head = previous;
+  head = h2;
 }

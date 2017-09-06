@@ -13,8 +13,9 @@ LinkedList    KEYWORD1
 #######################################
 
 PrintList    KEYWORD2
-Push_front   KEYWORD2
-Push_back    KEYWORD2
+Add_front   KEYWORD2
+Add_back    KEYWORD2
+Pop          KEYWORD2
 Delete	     KEYWORD2
 Clear        KEYWORD2
 Reverse      KEYWORD2

@@ -32,12 +32,11 @@ void QuickSort(int A[],int left, int right){
        }while(A[j] > pk);
       /*此時" A[i]比pk大 "且" A[j]比pk小 " 調換A[i]、A[j]*/
       if(i < j) {
-            //A[i]^=A[j]^=A[i]^=A[j];
-            temp = A[i]; A[i] = A[j]; A[j] = temp;
+        temp = A[i]; A[i] = A[j]; A[j] = temp;  //SWAP A[i]、A[j]
       }
     }while(i < j);
      
-    temp = A[left]; A[left] = A[j]; A[j] = temp;
+    temp = A[left]; A[left] = A[j]; A[j] = temp; //SWAP pk、A[j]
     
     /*-------查看排序過程-------*/
     // cout<<"[ ";

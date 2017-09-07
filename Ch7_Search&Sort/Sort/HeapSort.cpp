@@ -51,20 +51,20 @@ void BuildHeap(int tree[], int n){
 void HeapSort(int A[],int n){
   for(int i=n/2; i >= 1; i--){
     Adjust(A,i,n);
-  }printAry(A,1,8); 
+  }//printAry(A,1,8); 
   for(int i=(n-1); i>=1; i--){
-    cout << "SWAP A[1]="<<A[1]<< "  A["<<i+1<<"]="<<A[i+1]<<endl;
+    //cout << "SWAP A[1]="<<A[1]<< "  A["<<i+1<<"]="<<A[i+1]<<endl;
     A[1]^=A[i+1]^=A[1]^=A[i+1];  
-    cout <<"Adjusting...\n";
+    //cout <<"Adjusting...\n";
     Adjust(A,1,i); 
     
     /*查看建heap過程*/
-    for(int j=1; j<=i;j++){
-      cout << A[j] <<" ";
-    }cout<<"| ";
-    for(int j=i+1; j<=n;j++){
-      cout << A[j] <<" ";
-    }cout <<"\n\n";
+    // for(int j=1; j<=i;j++){
+    //   cout << A[j] <<" ";
+    // }cout<<"| ";
+    // for(int j=i+1; j<=n;j++){
+    //   cout << A[j] <<" ";
+    // }cout <<"\n\n";
     /*--------------*/
     
   }

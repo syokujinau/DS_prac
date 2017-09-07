@@ -4,15 +4,16 @@ using namespace std;
 void printAry(int A[],int i,int n); //print index i~n
 void Adjust(int tree[], int root,int n);
 void BuildHeap(int tree[], int n);  
-void HeapSort(int A[],int n); //sort index i~n
+void HeapSort(int A[],int n); //sort index 1~n
 
 int main(){
-  int a[9]={0,5,3,2,  1,7,8,9,  10};  //index:0不存資料，因為他不能用乘二找左子
+  /*註: Heap適合用array表示 因為它是complete BT*/
+  int a[9]={0,  5,3,2,1, 7,8,9,10};  //index:0不存資料，因為他不能用乘二找左子
   printAry(a,1,8); 
   //BuildHeap(a,6);
-  cout<<"========\n";
+  cout<<"===Sorting===\n";
   HeapSort(a,8);
-  cout<<"========\n";
+  cout<<"===Sorted!===\n";
   printAry(a,1,8);
 }
 

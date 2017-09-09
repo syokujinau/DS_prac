@@ -80,7 +80,7 @@ void LinkedList::Delete(int x){
   }
   else if(current->data == x){//case 2: first node is the target, don't need to traversal.
     head = head->link;
-    free(current);
+    delete current;
   }
   else{ //case 3: Traversal the list until the target is found 需要previous指標幫助連結前後2節點
     ListNode* previous=NULL;

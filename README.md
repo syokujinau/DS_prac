@@ -6,7 +6,7 @@
 ## *Ch3 Stack and Queue*
 * Stack
     * 使用Array ([C++](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Stack_array.cpp))
-    * 使用Linked-list ([C](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Stack_by_linked-list.c))
+    * 使用Linked-list ([C](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Stack_by_linked-list.c)) ([C++](https://goo.gl/fZmaS2))
 * Queue
 
 ## *Ch5 Tree*

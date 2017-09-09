@@ -65,12 +65,18 @@ void LinkedList::Add_back(int x){
 }
 
 void LinkedList::Pop(){
-  ListNode* tmp;
-  tmp  = head;
-  cout << "Poping " << tmp->data <<endl;
-  head = head->link;
-  delete tmp;
-  tmp  = NULL;
+  if(head==NULL){
+    cout << "Cannot pop the empty linked-list.\n";
+    return;
+  }
+  else{
+    ListNode* tmp;
+    tmp  = head;
+    cout << "Poping " << tmp->data <<endl;
+    head = head->link;
+    delete tmp;
+    tmp  = NULL;
+  }
 }
 
 void LinkedList::Delete(int x){

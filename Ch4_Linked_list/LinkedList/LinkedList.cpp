@@ -41,13 +41,20 @@ void LinkedList::Add_back(int x){
 }
 
 void LinkedList::Pop(){
-  ListNode* tmp;
-  tmp  = head;
-  //cout << "Poping " << tmp->data <<endl;
-  Serial.println("Poping "+ (String)tmp->data);
-  head = head->link;
-  delete tmp;
-  tmp  = NULL;
+  if(head==NULL){
+    Serial.println("Cannot pop the empty stack!");
+    return;
+  }
+  else{
+    ListNode* tmp;
+    tmp  = head;
+    //cout << "Poping " << tmp->data <<endl;
+    Serial.println("Poping "+ (String)tmp->data);
+    head = head->link;
+    delete tmp;
+    tmp  = NULL;
+  }
+
 }
 
 void LinkedList::Delete(int x){
@@ -58,7 +65,7 @@ void LinkedList::Delete(int x){
   }
   else if(current->data == x){//case 2: first node is the target, don't need to traversal.
     head = head->link;
-    free(current);
+    delete current;
   }
   else{ //case 3: Traversal the list until the target is found 需要previous指標幫助連結前後2節點
     ListNode* previous=NULL;

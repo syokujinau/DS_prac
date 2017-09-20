@@ -10,7 +10,11 @@ void printAry(vector<int> A){
 }
 
 void MergeTwoRun(vector<int> &A, int front, int mid, int end){
-  /*將原陣列分裂成Run1與Run2*/
+  /*
+  將原陣列分裂成
+  Run1 範圍: front   ~ mid
+  Run2       (mid+1) ~ end
+  */
   //cout << "front : "<< front << "; mid : "<<mid<<"; end : "<<end <<endl;
   vector<int>Run1(A.begin()+front  , A.begin()+mid+1); 
   vector<int>Run2(A.begin()+(mid+1), A.begin()+end+1);

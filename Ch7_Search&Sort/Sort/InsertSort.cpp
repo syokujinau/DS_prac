@@ -1,6 +1,11 @@
 /*
-Algo:
+Insert sort (Stable)
+Time complexity:
+Best  : O(n)
+Avg.  : O(n^2)
+Worst : O(n^2)
 
+Algo:
 InsertSort(A[],r){
   //排序A[1]~A[n]共n筆Data
   A[0] = -99      //防止r是串列最小值while迴圈會越界

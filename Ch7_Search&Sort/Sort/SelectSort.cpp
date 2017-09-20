@@ -1,6 +1,11 @@
 /*
-Algo:
+Select sort (Unstable)
+Time complexity:
+Best  : O(n^2)
+Avg.  : O(n^2)
+Worst : O(n^2)
 
+Algo:
 SeletSort(A[],n){
   //排序A[0]~A[n]
   for i=0 to (n-1) do {

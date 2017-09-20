@@ -1,3 +1,11 @@
+/*
+Heap sort (Unstable)
+Time complexity:
+Best  : O(n*log(n))
+Avg.  : O(n*log(n))
+Worst : O(n*log(n))
+*/
+
 #include <iostream>
 using namespace std;
 

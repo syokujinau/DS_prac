@@ -1,3 +1,11 @@
+/*
+Quick sort (Unstable)
+Time complexity:
+Best  : O(n*log(n))
+Avg.  : O(n*log(n))
+Worst : O(n^2)
+*/
+
 #include <iostream>
 using namespace std;
 

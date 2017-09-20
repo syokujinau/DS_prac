@@ -1,3 +1,11 @@
+/*
+Merge sort (Stable)
+Time complexity:
+Best  : O(n*log(n))
+Avg.  : O(n*log(n))
+Worst : O(n*log(n))
+*/
+
 #include <iostream>
 #include <vector>
 using namespace std;

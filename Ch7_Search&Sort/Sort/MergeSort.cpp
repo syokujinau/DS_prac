@@ -3,6 +3,22 @@
 using namespace std;
 #define MAX 9999
 
+void printAry(vector<int> A);
+void MergeTwoRun(vector<int> &A, int front, int mid, int end);
+void MergeSort(vector<int> &A, int front, int end);
+
+int main(){
+  int a[]={5,3,8,6, 2,7,1,4};
+  vector<int> ary(a, a+sizeof(a)/sizeof(int)); //vector constructor
+  printAry(ary);
+  MergeSort(ary, 0, 7);
+  cout << "Sorted!\n";
+  printAry(ary);
+  
+  
+  return 0;
+}
+
 void printAry(vector<int> A){
   for(int i=0; i<A.size(); i++){
      cout << A[i] << " ";
@@ -48,16 +64,4 @@ void MergeSort(vector<int> &A, int front, int end){
     MergeSort(A, mid+1, end);
     MergeTwoRun(A, front, mid, end);  //用比較的方法Merge front~mid與(mid+1)~end兩個子串列
   }
-}
-
-int main(){
-  int a[]={5,3,8,6, 2,7,1,4};
-  vector<int> ary(a, a+sizeof(a)/sizeof(int)); //vector constructor
-  printAry(ary);
-  MergeSort(ary, 0, 7);
-  cout << "Sorted!\n";
-  printAry(ary);
-  
-  
-  return 0;
 }

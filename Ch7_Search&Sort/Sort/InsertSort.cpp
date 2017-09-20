@@ -22,13 +22,14 @@ Insert(A[],r,i){
 #include <iostream>
 using namespace std;
 #define SIZE 9 //陣列資料長度
+#define min  -999
 
 void InsertSort(int *A,int n);
 void Insert(int *A,int r,int i);
 void printAry(int* A, int size);
 
 int main(){
-  int ary[]={-99,21,16,42,25,37,92,48,5};
+  int ary[]={min,  21,16,42,25,37,92,48,5};
   printAry(ary,SIZE);
   
   cout<<"sorting...\n";
@@ -38,7 +39,7 @@ int main(){
 
 void InsertSort(int *A,int n){
   //sorting A[1]~A[n]
-  A[0]=-99;
+  A[0]=min;
   for(int i=2; i <= n; i++){
     Insert(A, A[i], i-1);
     printAry(A, SIZE); //查看插入過程

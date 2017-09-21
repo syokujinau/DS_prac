@@ -1,3 +1,5 @@
+//標頭檔範例: https://repl.it/LZu2/3
+
 #include <iostream>
 using namespace std;
 

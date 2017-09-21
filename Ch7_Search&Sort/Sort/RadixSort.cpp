@@ -7,7 +7,7 @@ Avg.  : O(d*(n+r))
 Worst : O(d*(n+r))
 
 使用自定義的Queue類別:
-https://repl.it/LZwn/2
+https://repl.it/LZwn/4
 */
 #include <iostream>
 #include <deque> //因為需要pop_front 故使用queue類型的結構來儲存

@@ -104,7 +104,6 @@ Node* Graph::search_last(Node* vertex){
 }
 
 int main(){
-  
   Graph g1;
   
   g1.build_adjlist();

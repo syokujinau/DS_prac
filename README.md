@@ -18,14 +18,19 @@
 * Search
     * Linear & Binary Search ([C++](https://github.com/syokujinau/DS_prac/blob/master/Ch7_Search%26Sort/Search/Search_main.cpp))
 * Sort
-    * Insert Sort
-    * Selet Sort
-    * Bubble Sort
+    * [Insert Sort](https://goo.gl/EPQ8p1)
+    * [Selet Sort](https://goo.gl/Kjw1fZ)
+    * [Bubble Sort](https://goo.gl/xCgzg9)
     * Sell Sort
-    * Quick Sort
-    * Heap Sort 
+    * [Quick Sort](https://goo.gl/aDwwaV)
+    * [Merge Sort](https://goo.gl/icrq1z)
+    * [Heap Sort ](https://goo.gl/oa2RgP)
 
 ## *Ch6 Graph*
+* [DFS](https://goo.gl/VdzAzG)
+* BFS
+    * [使用Queue實作](https://goo.gl/EjdTqV) 
+    * 使用STL deque實作
 
 ## *Ch8 Hashing Method*
 

@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Queue.h"
 #define MAX 8  //頂點總數
 using namespace std;
 
@@ -35,6 +36,7 @@ class Graph {
   private:
     Node* adjlist[MAX];   //相鄰串列 
     bool  visited[MAX];   //拜訪紀錄陣列
+    
     Node* search_last(Node* vertex); //用於建立相鄰串列
     void build_adjlist(int A[][MAX]);
     void Init_visited(bool* A); //用於初始化拜訪紀錄陣列
@@ -51,6 +53,7 @@ class Graph {
       dfs(v);
       cout << endl;
     }
+    void BFS(int v);
 };
 
 /*由adjMatrix建立相鄰串列，因為是Row-major，所以需要先定義col數*/
@@ -110,6 +113,34 @@ void Graph::dfs(int v){ //傳入頂點編號
     
   }while(ptr!=NULL); //當還有相鄰頂點存在
 }
+
+/*廣度優先搜尋*/
+void Graph::BFS(int v){
+  Node* ptr; 
+  int u,w;  
+  Queue q; //宣告Queue
+  Init_visited(visited); //初始化visited[]
+  
+  /*拜訪起點v*/
+  cout << "BFS(廣度優先搜尋) : V" << adjlist[v-1]->vertex << " "; 
+  visited[v-1] = true;
+  q.enqueue(v);
+  
+  while( !q.IsEmpty() ){ //當Queue非空
+    u = q.dequeue();  //u為dequeue的頂點編號
+    ptr = adjlist[u-1]->link; //指向頂點u的相鄰頂點
+    do{ 
+      w = ptr->vertex; //w為u的相鄰頂點編號
+      if(!visited[w-1]){ //若w未拜訪過
+        cout << "V"<< w << " "; //拜訪w點
+        visited[w-1] = true;
+        q.enqueue(w);   //enqueue此點的編號
+      }
+      ptr = ptr->link; //指向下一個相鄰u的頂點
+    }while(ptr!=NULL); //直到所有相鄰u的頂點都被走過
+  }
+  cout << endl;
+}
  
 /*搜尋串列最後的節點，傳入相鄰串列之頂點指標(陣列成員)，回傳最後的節點指標*/
 Node* Graph::search_last(Node* vertex){ 
@@ -131,7 +162,9 @@ int main(){
   Graph g1(adjMatrix);
   
   g1.print_adjlist();
+  g1.BFS(3);
   g1.DFS(5); 
+  
   
   return 0;
 }

@@ -1,38 +1,27 @@
 #include <iostream>
 using namespace std;
 
-void printArray(int cc[],int n){
-  for(int i=0 ;i<n;i++){
-    cout<<cc[i]<<"\t";
-  }cout<<endl;
-}
-
-void swap(int* a,int* b){
-  int tmp;
-  tmp = *a;
-  *a  = *b;
-  *b  = tmp;
-}
-
-void permute(int *array,int i,int length) { 
-  if (length == i){
-     printArray(array,length);
-     return;
+void perm(char* A, int i, int n){ //排列組合index 0~2的字元陣列
+  if(i==n){
+    for(int i=0;i<=n;i++){
+      cout << A[i] << " ";
+    }cout << endl;
   }
-  int j = i;
-  for (j = i; j < length; j++) { 
-     swap(array+i,array+j);
-     permute(array,i+1,length);
-     swap(array+i,array+j);
+  else{
+    for(int j = i; j <= n; j++){
+      int t;
+      t = A[i]; A[i] = A[j]; A[j] = t;
+      perm(A,i+1,n);
+      t = A[i]; A[i] = A[j]; A[j] = t;
+    }
   }
-  return;
 }
-
-
 
 int main(){
-  int ary[]={1,2,3};
-  //排列陣列內容ary[0]~ary[2]共個3元素 列出3!個組合
-  permute(ary,0,3); 
+  
+  char ary[3] = {'a','b','c'};
+  perm(ary,0,2);
+  
+  return 0;
 }
 

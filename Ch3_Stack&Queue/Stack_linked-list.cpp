@@ -19,7 +19,7 @@ public:
   }
   void push(int num);
   void pop(void);
-  int  peek(void);
+  int  peek(void); //回傳第一筆資料，但不pop掉
   bool IsEmpty(void);
   void printStack(void);
   void Clear(void);
@@ -52,13 +52,8 @@ int Stack::peek(void){
     return 0; //回傳0代表錯誤資料
   }
   else{
-    ListNode* tmp;
     int item;
-    tmp = top;
-    item = tmp->data;
-    top = top->link;
-    delete tmp;
-    tmp = NULL;
+    item = top->data;
     return item;
   }
 }

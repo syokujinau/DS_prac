@@ -29,6 +29,7 @@ void Stack::push(int num){
   ListNode* newNode = new ListNode(num);
   newNode->link = top;
   top           = newNode;
+  //cout << "top data:"<<top->data <<endl;
 }
 
 void Stack::pop(void){
@@ -48,13 +49,11 @@ void Stack::pop(void){
 
 int Stack::peek(void){
   if(top == NULL){
-    cout << "[ERROR]Cannot pop the empty stack!\n";
+    cout << "[ERROR]Cannot peek the empty stack!\n";
     return 0; //回傳0代表錯誤資料
   }
   else{
-    int item;
-    item = top->data;
-    return item;
+    return top->data;
   }
 }
 
@@ -117,6 +116,7 @@ int main() {
     Stack s2;
     s2.pop();
     s2.push(333);
+    cout << "peek s2 : "<< s2.peek() <<endl;
     s2.push(111);
     s2.push(222);
     s2.printStack();

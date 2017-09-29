@@ -11,37 +11,55 @@ private:
     ListNode(int d):data(d),link(NULL){}; //用於加入新data
 
     friend class Stack;
-  };
+  }; 
   ListNode* top;
 public:
   Stack(){
     top = NULL;
   }
-  void Push(int num);
-  void Pop(void);
+  void push(int num);
+  void pop(void);
+  int  peek(void);
   bool IsEmpty(void);
   void printStack(void);
   void Clear(void);
 };
 
-void Stack::Push(int num){
+void Stack::push(int num){
   ListNode* newNode = new ListNode(num);
   newNode->link = top;
   top           = newNode;
 }
 
-void Stack::Pop(void){
+void Stack::pop(void){
   if(top == NULL){
-    cout << "Cannot pop the empty stack!\n";
+    cout << "[ERROR]Cannot pop the empty stack!\n";
     return;
   }
   else{
     ListNode* tmp;
     tmp = top;
-    cout << "Poping "<< tmp->data << endl;
+    cout << "poping "<< tmp->data << endl;
     top = top->link;
     delete tmp;
     tmp = NULL;
+  }
+}
+
+int Stack::peek(void){
+  if(top == NULL){
+    cout << "[ERROR]Cannot pop the empty stack!\n";
+    return 0; //回傳0代表錯誤資料
+  }
+  else{
+    ListNode* tmp;
+    int item;
+    tmp = top;
+    item = tmp->data;
+    top = top->link;
+    delete tmp;
+    tmp = NULL;
+    return item;
   }
 }
 
@@ -83,14 +101,14 @@ void Stack::Clear(void){
 
 int main() {
     Stack s1;
-    s1.Push(1);
-    s1.Push(2);
-    s1.Push(3);
-    s1.Push(4);
-    s1.Push(5);
+    s1.push(1);
+    s1.push(2);
+    s1.push(3);
+    s1.push(4);
+    s1.push(5);
     s1.printStack();
-    s1.Pop();
-    s1.Pop();
+    s1.pop();
+    s1.pop();
     s1.printStack();
     s1.Clear();
     s1.printStack();
@@ -102,10 +120,10 @@ int main() {
     }
     cout << "\n\ns2\n";
     Stack s2;
-    s2.Pop();
-    s2.Push(333);
-    s2.Push(111);
-    s2.Push(222);
+    s2.pop();
+    s2.push(333);
+    s2.push(111);
+    s2.push(222);
     s2.printStack();
     if(s2.IsEmpty()){
         cout<<"s2 is empty.\n";

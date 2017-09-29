@@ -1,76 +1,107 @@
 #include <iostream>
 using namespace std;
 
-class IntStack{
-private:
-  int* stackArray;
-  int capacity;
-  int top;
-public:
-  IntStack(int capacity); //Constructor
-  ~IntStack() {delete[] stackArray; }
-  void push(int value );
-  void pop (int &value);
-  bool isEmpty();
-  void list();
-  //Stack Exceptions
-  class Overflow  {};
-  class Underflow {};
+class Stack{
+  private:
+    int *stackArray;
+    int capacity; 
+    int top; //指向頂端資料的上一格
+  public:
+    Stack(int c);
+    ~Stack(){
+      delete[]  stackArray;
+    }
+    void push(int num);
+    void pop(void); 
+    int peek(void); //回傳最頂端資料，但不pop
+    bool IsEmpty(void);
+    void printStack(void);
 };
 
-//Constructor
-IntStack::IntStack(int capacity){
-  this->capacity = capacity;
-  stackArray     = new int[capacity];
-  top            = 0;
+Stack::Stack(int c){
+  this->capacity = c;  //不用this??
+  stackArray = new int[capacity];
+  top = 0;
 }
 
-//Adds a value to the stack
-void IntStack::push(int value){
-  // cout << "top is : "<<top <<endl;
-  if(top == capacity) throw IntStack::Overflow();
-  stackArray[top] = value;
-  top++;
-}
-
-void IntStack::pop(int &value){
-  if(isEmpty()) throw IntStack::Underflow();
-  top--;
-  value = stackArray[top];
-}
-
-bool IntStack::isEmpty(){
-  if (top == 0) return true ;
-  else          return false;
-}
-
-void IntStack::list(){
-  int temp = top;
-  cout << "\n List: \n";
-  for(int i=temp-1; i>=0 ; i--){
-    cout << "      " << stackArray[i] <<endl;
+void Stack::push(int num){
+  if(top == capacity){
+    cout << "[ERROR]Can't push in the stack.\n";
+    return;
+  }
+  else{
+    stackArray[top] = num;
+    top++;
   }
 }
 
+void Stack::pop(void){
+  if(IsEmpty()){
+    cout << "[ERROR]Can't pop the empty stack.\n";
+    return;
+  }
+  else{
+    top--;
+    //cout << "Now top is : "<<stackArray[top-1] <<endl;
+  }
+}
+
+int Stack::peek(void){
+  if(IsEmpty()){
+    cout << "[ERROR]Can't peek the empty stack.\n"; 
+    return 0; //0代表錯誤輸出
+  }
+  else{
+    return stackArray[top-1];
+  }
+}
+
+bool Stack::IsEmpty(void){
+  if(top == 0)
+    return true;
+  else
+    return false;
+}
+
+void Stack::printStack(void){
+  cout << "______\nStack\n";
+  if(IsEmpty()){
+    cout << "It's empty...\n";
+  }else{
+    for(int i = top-1; i >= 0; i--){
+      cout << " " <<stackArray[i] << endl;
+    }
+  }
+  cout<<"______\n";
+}
+
 int main(){
-
-  IntStack stack(5);
-  int value; //store the poped value.
-
-  stack.push(5);
-  stack.push(10);
-  stack.push(15);
-  stack.push(20);
-  stack.push(25);
-  stack.list();
-  stack.pop(value); 
-  stack.pop(value); 
-  stack.pop(value);
-  stack.push(2);
-  stack.push(4);
-  stack.push(6);
-  stack.list();
-
-
+  Stack s1(5);
+  s1.pop();
+  s1.push(1);
+  s1.push(2);
+  s1.push(3);
+  s1.push(4);
+  s1.push(5);
+  s1.push(6);
+  s1.pop();
+  cout << "top data: " << s1.peek() <<endl;
+  s1.printStack();
+  s1.pop();
+  s1.pop();
+  s1.pop();
+  s1.pop();
+  s1.printStack();
+  
   return 0;
 }
+
+
+
+
+
+
+
+
+
+

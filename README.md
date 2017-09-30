@@ -8,6 +8,7 @@
     * 使用Array ([C++](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Stack_array.cpp))
     * 使用Linked-list ([C](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Stack_by_linked-list.c)) ([C++](https://goo.gl/fZmaS2))
 * Queue
+    * 使用Array ([C++](https://github.com/syokujinau/DS_prac/blob/master/Ch3_Stack%26Queue/Queue_array.cpp))
     * 使用Linked-list([C++](https://goo.gl/VuEt5V))
 
 ## *Ch5 Tree*
@@ -33,4 +34,3 @@
     * 使用STL deque實作
 
 ## *Ch8 Hashing Method*
-

@@ -34,3 +34,4 @@
     * 使用STL deque實作
 
 ## *Ch8 Hashing Method*
+* [Chaining](https://goo.gl/gK1soC)
